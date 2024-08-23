@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "nip - NoteInPlace",
+    "version": "1.0",
+    "description": "Maintain markdown notes for each website and sync with GitHub.",
+    "permissions": ["storage", "activeTab", "scripting", "identity"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+      }
+    },
+    "options_page": "options.html",
+    "icons": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "oauth2": {
+      "client_id": "YOUR_GITHUB_OAUTH_CLIENT_ID",
+      "scopes": ["repo", "user"]
+    }
+  }
+  

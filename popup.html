@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>nip - NoteInPlace</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body, html {
+      width: 600px;  /* Set the desired width */
+      height: 400px; /* Set the desired height */
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div id="view-mode">
+    <div id="rendered-markdown"></div>
+    <button id="edit-note">Edit Note</button>
+  </div>
+  
+  <div id="edit-mode" style="display:none;">
+    <textarea id="markdown-note" placeholder="Write your note here..."></textarea>
+    <button id="save-note">Save Note</button>
+    <button id="cancel-edit">Cancel</button>
+  </div>
+
+  <button id="sync-github">Sync with GitHub</button>
+
+    <!-- Include the locally hosted marked.js -->
+    <script src="libs/marked.min.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
