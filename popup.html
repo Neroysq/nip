@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>nip - NoteInPlace</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     body, html {
       width: 600px;  /* Set the desired width */
@@ -14,21 +17,25 @@
   </style>
 </head>
 <body>
-  <div id="view-mode">
-    <div id="rendered-markdown"></div>
-    <button id="edit-note">Edit Note</button>
-  </div>
-  
-  <div id="edit-mode" style="display:none;">
-    <textarea id="markdown-note" placeholder="Write your note here..."></textarea>
-    <button id="save-note">Save Note</button>
-    <button id="cancel-edit">Cancel</button>
+  <div id="container">
+    <div id="view-mode" class="mode">
+      <div id="rendered-markdown" class="markdown-display"></div>
+      <button id="edit-note" class="action-button"><i class="fas fa-edit"></i> Edit Note</button>
+    </div>
+
+    <div id="edit-mode" class="mode hidden">
+      <textarea id="markdown-note" placeholder="Write your note here..."></textarea>
+      <div class="button-group">
+        <button id="save-note" class="action-button primary"><i class="fas fa-save"></i> Save Note</button>
+        <button id="cancel-edit" class="action-button"><i class="fas fa-times"></i> Cancel</button>
+      </div>
+    </div>
+
+    <button id="sync-github" class="action-button secondary"><i class="fas fa-sync"></i> Sync with GitHub</button>
+
   </div>
 
-  <button id="sync-github">Sync with GitHub</button>
-
-    <!-- Include the locally hosted marked.js -->
-    <script src="libs/marked.min.js"></script>
+  <script src="libs/marked.min.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>
