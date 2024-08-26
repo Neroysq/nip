@@ -23,13 +23,18 @@ document.getElementById('save-github-settings').addEventListener('click', () => 
   });
   
 
-document.getElementById('clear-auth').addEventListener('click', () => {
-  chrome.storage.sync.remove('githubToken', () => {
-    document.getElementById('github-token').value = '';
-    alert('Token cleared. Please reauthorize.');
-    authenticateWithGitHub(clientId);
+  document.getElementById('clear-auth').addEventListener('click', () => {
+    chrome.storage.sync.remove(['githubToken', 'githubRepo', 'githubBranch'], () => {
+      alert('GitHub token and settings cleared. Please reauthorize.');
+      chrome.identity.launchWebAuthFlow({
+        url: `https://github.com/logout`,
+        interactive: true
+      }, () => {
+        // Perform additional actions after clearing auth if needed
+        document.getElementById('github-token').value = '';
+      });
+    });
   });
-});
 
 // Load existing settings when the options page is opened
 document.addEventListener('DOMContentLoaded', () => {
