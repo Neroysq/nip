@@ -22,7 +22,7 @@
       "128": "icons/icon128.png"
     },
     "oauth2": {
-      "client_id": "YOUR_GITHUB_OAUTH_CLIENT_ID",
+      "client_id": "Ov23li1RfbjiecwfNdkm",
       "scopes": ["repo", "user"]
     }
   }

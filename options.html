@@ -1,14 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>nip Options</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nip - GitHub Settings</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>nip - NoteInPlace Options</h1>
-  <label for="github-repo">GitHub Repository:</label>
-  <input type="text" id="github-repo">
-  <button id="save-options">Save</button>
+  <div id="container">
+    <h1>GitHub Settings</h1>
+
+    <div class="section">
+      <label for="github-repo">Select Repository:</label>
+      <select id="github-repo">
+        <option value="" disabled selected>Select a repository</option>
+      </select>
+    </div>
+
+    <div class="section">
+      <label for="github-branch">Branch (default is `main`):</label>
+      <input type="text" id="github-branch" placeholder="main">
+    </div>
+
+    <div class="section">
+      <label for="github-token">GitHub OAuth Token:</label>
+      <input type="password" id="github-token" placeholder="OAuth token" disabled>
+    </div>
+
+    <div class="button-group">
+      <button id="auth-github" class="action-button primary">Authenticate with GitHub</button>
+      <button id="save-github-settings" class="action-button primary">Save Settings</button>
+      <button id="clear-auth" class="action-button secondary">Clear Token and Reauthorize</button>
+    </div>
+  </div>
+
   <script src="options.js"></script>
 </body>
 </html>

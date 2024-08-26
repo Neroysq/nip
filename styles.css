@@ -1,83 +1,97 @@
-/* styles.css */
-
+/* General Styling */
 body, html {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: #f5f5f5;
+    background-color: #f4f4f4;
+    color: #333;
   }
   
   #container {
-    padding: 16px;
     max-width: 600px;
-    margin: auto;
-    background: #ffffff;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
     border-radius: 8px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
   
-  .mode.hidden {
-    display: none;
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #6200ee;
   }
   
-  .markdown-display {
-    background-color: #fafafa;
-    border: 1px solid #ddd;
-    padding: 16px;
-    border-radius: 4px;
-    min-height: 200px;
-    overflow-y: auto;
-    margin-bottom: 16px;
-    word-wrap: break-word;
+  .section {
+    margin-bottom: 20px;
   }
   
-  textarea {
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"], input[type="password"], select {
     width: 100%;
-    height: 200px;
-    padding: 12px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
+  }
+  
+  input[type="text"]:focus, input[type="password"]:focus, select:focus {
+    outline: none;
+    border-color: #6200ee;
+    box-shadow: 0 0 5px rgba(98, 0, 238, 0.5);
   }
   
   .button-group {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
   
   .action-button {
-    padding: 10px 16px;
-    background-color: #6200ee;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
     color: white;
+    background-color: #6200ee;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
-  }
-  
-  .action-button:hover {
-    background-color: #3700b3;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+    flex-grow: 1;
+    margin-right: 10px;
   }
   
   .action-button.secondary {
     background-color: #03dac6;
   }
   
+  .action-button:hover {
+    background-color: #3700b3;
+  }
+  
   .action-button.secondary:hover {
     background-color: #018786;
   }
   
-  .action-button.primary {
-    background-color: #6200ee;
+  .action-button:disabled {
+    background-color: #bbb;
+    cursor: not-allowed;
   }
   
-  .action-button.primary:hover {
-    background-color: #3700b3;
+  @media (max-width: 600px) {
+    .action-button {
+      flex-grow: unset;
+      width: 100%;
+      margin-right: 0;
+    }
   }
   
