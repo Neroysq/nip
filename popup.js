@@ -28,20 +28,17 @@ document.addEventListener('DOMContentLoaded', () => {
       chrome.storage.local.set({ [selectedDomain]: note }, () => {
         syncNoteToGitHub(note, selectedDomain, () => {
           renderMarkdown(note);
-          document.getElementById('edit-mode').style.display = 'none';
-          document.getElementById('view-mode').style.display = 'block';
+          toggleViewMode();
         });
       });
     });
   
     document.getElementById('edit-note').addEventListener('click', () => {
-      document.getElementById('view-mode').style.display = 'none';
-      document.getElementById('edit-mode').style.display = 'block';
+        toggleEditMode();
     });
   
     document.getElementById('cancel-edit').addEventListener('click', () => {
-      document.getElementById('edit-mode').style.display = 'none';
-      document.getElementById('view-mode').style.display = 'block';
+        toggleViewMode();
     });
   
     document.getElementById('sync-github').addEventListener('click', () => {
@@ -51,6 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
         syncNoteToGitHub(note, selectedDomain);
       });
     });
+
+    // Open the GitHub options page
+  document.getElementById('open-github-options').addEventListener('click', () => {
+    chrome.runtime.openOptionsPage();
+  });
   });
   
   function getDomainLevels(url) {
@@ -75,13 +77,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const note = result[domain] || '';
       renderMarkdown(note);
       document.getElementById('markdown-note').value = note;
+      toggleViewMode();
     });
   }
   
   function renderMarkdown(note) {
     const renderedHTML = marked.parse(note);
     document.getElementById('rendered-markdown').innerHTML = renderedHTML;
-    document.getElementById('markdown-note').value = note;
+    // document.getElementById('markdown-note').value = note;
+  }
+
+  function toggleEditMode() {
+    document.getElementById('view-mode').classList.remove('active');
+    document.getElementById('edit-mode').classList.add('active');
+  }
+  
+  function toggleViewMode() {
+    document.getElementById('edit-mode').classList.remove('active');
+    document.getElementById('view-mode').classList.add('active');
   }
   
   // Function to safely encode a string to Base64 considering Unicode characters
